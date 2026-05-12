@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytor</title>
+    <style>
+        body {
+            background-color: #d3d3d3;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        #container {
+            width: 500px;
+            margin: 20px auto;
+            border: 2px solid black;
+            background-color: white;
+            padding: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            text-decoration: underline;
+        }
+
+        #toolbar {
+            background-color: #e6e6e6;
+            border: 2px outset gray;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(16, 20px);
+            grid-template-rows: repeat(16, 20px);
+            width: 320px;
+            margin: 0 auto;
+            border: 3px solid black;
+        }
+
+        .cell {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 1px solid gray;
+            box-sizing: border-box;
+        }
+
+        .cell:hover {
+            background-color: yellow;
+            cursor: pointer;
+        }
+
+        #info {
+            margin-top: 20px;
+            border: 1px dashed black;
+            padding: 10px;
+            background-color: #ffffcc;
+        }
+
+        .info-span {
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <h1>Zadanie - Edytor Pikseli</h1>
+
+    <div id="toolbar">
+        <input type="color" id="color-picker" value="#000000">
+        <select id="brush-size">
+            <option value="1">1x1</option>
+            <option value="2">2x2</option>
+            <option value="3">3x3</option>
+        </select>
+        <button id="eraser-btn">Gumka</button>
+        <button id="clear-btn">Wyczyść</button>
+    </div>
+
+    <div id="grid"></div>
+
+    <div id="info">
+        Wiersz: <span id="info-row" class="info-span">–</span> |
+        Kolumna: <span id="info-col" class="info-span">–</span> |
+        Aktywne komórki: <span id="info-count" class="info-span">0</span>
+    </div>
+</div>
+
+<script>
+    const grid = document.getElementById('grid');
+
+    for (let r = 0; r < 16; r++) {
+        for (let c = 0; c < 16; c++) {
+            const cell = document.createElement('div');
+            cell.className = 'cell';
+            cell.setAttribute('data-row', r);
+            cell.setAttribute('data-col', c);
+            grid.appendChild(cell);
+        }
+    }
+</script>
+</body>
+</html>
